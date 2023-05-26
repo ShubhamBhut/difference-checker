@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diff Strings</title>
+    <script>
+        async function diffStrings() {
+            const string1 = document.getElementById("string1").value;
+            const string2 = document.getElementById("string2").value;
+
+            const response = await fetch("http://localhost:3000/diff", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ string1, string2 }),
+            });
+
+            const diffs = await response.json();
+            displayDiffs(diffs);
+        }
+
+        function displayDiffs(diffs) {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "";
+
+            diffs.forEach((diff) => {
+                const diffString = `Line: ${diff[0]}, Character: ${diff[1]}, Char: ${diff[2]}`;
+                const diffElement = document.createElement("p");
+                diffElement.textContent = diffString;
+                outputDiv.appendChild(diffElement);
+            });
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="string1" placeholder="String 1">
+    <input type="text" id="string2" placeholder="String 2">
+    <button onclick="diffStrings()">Diff</button>
+    <div id="output"></div>
+</body>
+</html>
+
