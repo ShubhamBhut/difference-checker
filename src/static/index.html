@@ -31,12 +31,29 @@
             });
         }
     </script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <input type="text" id="string1" placeholder="String 1">
-    <input type="text" id="string2" placeholder="String 2">
-    <button onclick="diffStrings()">Diff</button>
-    <div id="output"></div>
+    <div class="container">
+        <h1>String Checker</h1>
+        <div class="area">
+            <div class="input-group">
+                <!-- <label for="string1">Enter your correct string:</label> -->
+            <textarea type = "text" id="string1" placeholder="Enter your correct string:"></textarea>
+            <!-- <input type="text" id="string1" placeholder="Enter text"> -->
+        </div>
+        <div class="input-group">
+            <!-- <label for="string2">Enter your Check string</label> -->
+            <textarea type = "text" id="string2" placeholder="Enter your check string:"></textarea>
+            <!-- <input type="text" id="string2" placeholder="Enter text"> -->
+        </div>
+    </div>
+        <div class="submit-button">
+            <button onclick="diffStrings()">Difference</button>
+        </div>
+        <div id="output"></div>
+    </div>
+    
 </body>
 </html>
 
